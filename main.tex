@@ -1,0 +1,151 @@
+\documentclass{beamer}
+
+\usetheme{uhh}
+\showtotalframenumber
+\showuhhlogoeachframe
+\showsections
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{color}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\usepackage{listings}
+\lstset{
+  language=python
+  }
+
+
+\title{Inducing Interpretable Word Senses for WSD and Enrichment of Lexical Resources}
+
+\institute[University of Hamburg] 
+{
+  Faculty of Mathematics, Informatics, and Natural Sciences \\
+  Department of Informatics\\
+  Language Technology Group
+}
+
+
+\author{Alexander Panchenko \\University of Hamburg, Germany}
+\date[11.02.2018]{Jan 11, 2018}
+
+
+\AtBeginSection[]
+{
+   %%%%% section title
+   % This is how it would look like in Beamer:
+   % \begin{frame}
+   %     \frametitle{Overview}
+   %     \tableofcontents[sections={2-3},currentsection,sectionstyle=show/hide,subsectionstyle=hide]
+   % \end{frame}
+  \begin{frame}[plain]
+  \begin{tikzpicture}[overlay]
+    \relax%
+    \fill[blueuhh,opacity=1] (-10,-10)
+    rectangle(\the\paperwidth,\the\paperheight);
+  \end{tikzpicture}
+   \begin{tikzpicture}[overlay]
+    \relax%
+    \fill[white,opacity=1] (-5,-1.2)
+    rectangle(\the\paperwidth,0.5) node[pos=0.5,black]{\LARGE\insertsectionhead};
+  \end{tikzpicture}
+  \end{frame}
+
+  %%%% add subsection to show navigation dots
+  \subsection{}
+}
+
+\begin{document}
+
+\maketitle
+
+%\begin{frame}
+%  \frametitle{Overview}
+%
+%  \begin{itemize}
+%		\item Tensorflow Introduction / First session
+%		\item Regression models
+%		\item Neural tagger (DNN)
+%		\item Implementing Word2Vec	
+%		\item \textcolor{greyuhh}{Introduction to Tensorboard}
+%		\item\textcolor{greyuhh}{Neural tagger (LSTM)}
+%		\item \textcolor{greyuhh}{RNN language model (LSTM)}
+%		\item \textcolor{greyuhh}{Maybe: Convolutions}
+%	\end{itemize}
+%\end{frame}
+
+\section{Motivation}
+
+\begin{frame}
+\frametitle{Motivation: Speech recognition}
+
+\vspace{5mm}
+
+
+\end{frame}
+
+
+\section{Conclusion}
+
+\begin{frame}{Summary}
+
+\begin{itemize}
+	\item How to \textbf{induce word senses} and \textbf{semantic classes} from text and synonyms.
+    \vspace{1em}
+    \pause
+    
+	\item \textbf{Interpretability can be added} on the top of induced word senses in a model agnostic way. 
+	\vspace{1em}
+    \pause
+	
+	\item Hypernymy labels \textbf{improve hypernymy extraction}. 
+	\vspace{1em}
+	\pause
+	
+	\item Linking induced word senses to lexical resources:
+	\begin{itemize} 
+		\item improves \textbf{performance of WSD};
+		\item can be used to \textbf{enrich lexical resources} with new senses.
+	\end{itemize}
+	
+	
+\end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}{A New Shared Task on WSI\&D}
+  
+  \begin{itemize}
+  \item Participate in an ACL SIGSLAV sponsored shared task on \textbf{word sense induction and disambiguation} for Russian!
+  
+  
+ \end{itemize} 
+  
+  \begin{block}{A lexical sample task evaluated using the ARI measure }
+  \begin{itemize}
+  	\item Target word, e.g. ``bank'' (in Russian).
+  	\item Contexts where the word occurs.
+  	\item You need to group the contexts by senses.
+  \end{itemize}
+  %You are given a word, e.g. bank and contexts where the word occurs. %e.g. bank is a financial institution that accepts deposits and river bank is a slope beside a body of water.
+  % You need to cluster these contexts in the (unknown in advance) number of clusters which correspond to senses of the word. %In this example, you want to have two groups with the contexts of the company and the area senses of the word bank.
+  \end{block}
+  
+  \pause
+  \begin{itemize}
+    \item \textbf{More details}: \url{http://russe.nlpub.org/2018/wsi}
+  \item You can participate by \textbf{31.01.2018}.
+  %\item The submission is via the CodaLab: you can see an \textbf{estimate of your rank immediately}.
+    
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}{}
+\Huge{Thank you!}
+\end{frame}
+
+\end{document}
+
