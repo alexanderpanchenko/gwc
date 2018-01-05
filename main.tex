@@ -59,30 +59,74 @@
 
 \maketitle
 
-%\begin{frame}
-%  \frametitle{Overview}
-%
-%  \begin{itemize}
-%		\item Tensorflow Introduction / First session
-%		\item Regression models
-%		\item Neural tagger (DNN)
-%		\item Implementing Word2Vec	
-%		\item \textcolor{greyuhh}{Introduction to Tensorboard}
-%		\item\textcolor{greyuhh}{Neural tagger (LSTM)}
-%		\item \textcolor{greyuhh}{RNN language model (LSTM)}
-%		\item \textcolor{greyuhh}{Maybe: Convolutions}
-%	\end{itemize}
-%\end{frame}
+\begin{frame}
+  \frametitle{Overview}
 
-\section{Motivation}
+  \begin{itemize}
+		\item \textbf{Inducing word sense representations}:
+		\begin{itemize}
+		\item word sense embeddings via retrofitting \cite{pelevina-EtAl:2016:RepL4NLP,remus:2018};
+		\item sparse sense representations \cite{panchenko-EtAl:2017:EACLlong};
+		\item semantic classes \cite{panchenko:2018:SemanticClasses} 
+		\end{itemize}
+		
+	\pause 
+	\vspace{1em}
+	\item \textbf{Making the induced senses interpretable} \cite{panchenko-EtAl:2017:EMNLP2017Demos,panchenko-EtAl:2017:EACLlong}
+	
+	\pause
+	\vspace{1em}
+	\item \textbf{Linking induced word senses to lexical resources}~\cite{faralli2016linked,panchenko-EtAl:2017:SENSE2017,biemann2018framework}	
+			
+\end{itemize}
+	
+\end{frame}
+
+\section{Inducing word sense representations}
+
+
+\begin{frame}[fragile]
+\frametitle{Related work}
+\begin{center}
+ \includegraphics[height=0.56\textwidth]{sense_embeddings}
+ \end{center}
+\end{frame}
+
 
 \begin{frame}
-\frametitle{Motivation: Speech recognition}
+\frametitle{Related work: \\Knowledge-Based Sense Embeddings}
+\begin{itemize}
+	\item AutoExtend~\cite{rothe-schutze:2015:ACL-IJCNLP}
+\end{itemize}
+\begin{center}
+ \includegraphics[width=1.0\textwidth]{autoextend}
+ \end{center}
 
-\vspace{5mm}
-
+{\footnotesize
+ * image is reproduced from the original paper
+}
 
 \end{frame}
+
+\begin{frame}{Related work: \\ Knowledge-Free Sense Embeddings}
+
+\begin{itemize}
+\item Adagram~\cite{bartunov2016breaking}
+\item Multiple vector representations $\theta$ for each word:
+%\item An bayesian extension of the Skip-gram model:
+ $$p(Y,Z,\mathbf{\beta}|X,\alpha,\theta) = \prod_{w=1}^{V} \prod_{k=1}^{\infty} p(\beta_{wk}|\alpha) \prod_{i=1}^N [p(z_i|x_i,\mathbf{\beta}) \prod_{j=1}^C p(y_{ij}|z_i,x_i,\theta)],$$ 
+\begin{itemize}
+\item $\alpha$ -- a meta-parameter controlling number of senses;
+\item $z_i$ -- a hidden variable: a sense index in context; 
+\item $p(\beta_{wk}|\alpha)$ -- a priory probability of the $k$-th sense of the word $w$;
+\item $p(z_i|x_i,\mathbf{\beta})$ -- probability of observing word $x_i$ in the sense $z_i$;
+\item $\prod_{j=1}^C p(y_{ij}|z_i,x_i,\theta)$ -- probability of a context $C$.
+\end{itemize}
+
+\end{itemize}
+	
+\end{frame}
+
 
 
 \section{Conclusion}
@@ -129,16 +173,13 @@
   	\item Contexts where the word occurs.
   	\item You need to group the contexts by senses.
   \end{itemize}
-  %You are given a word, e.g. bank and contexts where the word occurs. %e.g. bank is a financial institution that accepts deposits and river bank is a slope beside a body of water.
-  % You need to cluster these contexts in the (unknown in advance) number of clusters which correspond to senses of the word. %In this example, you want to have two groups with the contexts of the company and the area senses of the word bank.
-  \end{block}
+   \end{block}
   
   \pause
   \begin{itemize}
     \item \textbf{More details}: \url{http://russe.nlpub.org/2018/wsi}
   \item You can participate by \textbf{31.01.2018}.
-  %\item The submission is via the CodaLab: you can see an \textbf{estimate of your rank immediately}.
-    
+     
   \end{itemize}
   
 \end{frame}
@@ -146,6 +187,10 @@
 \begin{frame}{}
 \Huge{Thank you!}
 \end{frame}
+
+\bibliography{biblio}
+\bibliographystyle{apalike}
+
 
 \end{document}
 
