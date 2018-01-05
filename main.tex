@@ -18,15 +18,15 @@
 
 \title{Inducing Interpretable Word Senses for WSD and Enrichment of Lexical Resources}
 
-\institute[University of Hamburg] 
-{
-  Faculty of Mathematics, Informatics, and Natural Sciences \\
-  Department of Informatics\\
-  Language Technology Group
-}
+%\institute[University of Hamburg] 
+%{
+%  Faculty of Mathematics, Informatics, and Natural Sciences \\
+%  Department of Informatics\\
+%  Language Technology Group
+%}
 
 
-\author{Alexander Panchenko \\University of Hamburg, Germany}
+\author{Alexander Panchenko} % \\University of Hamburg, Germany}
 \date[11.02.2018]{Jan 11, 2018}
 
 
@@ -67,7 +67,7 @@
 		\begin{itemize}
 		\item word sense embeddings via retrofitting \cite{pelevina-EtAl:2016:RepL4NLP,remus:2018};
 		\item sparse sense representations \cite{panchenko-EtAl:2017:EACLlong};
-		\item semantic classes \cite{panchenko:2018:SemanticClasses} 
+		\item sense semantic classes \cite{panchenko:2018:SemanticClasses} 
 		\end{itemize}
 		
 	\pause 
@@ -96,7 +96,7 @@
 \begin{frame}
 \frametitle{Related work: knowledge-based}
 \begin{itemize}
-	\item AutoExtend~\cite{rothe-schutze:2015:ACL-IJCNLP}
+	\item \textbf{AutoExtend}~\cite{rothe-schutze:2015:ACL-IJCNLP}
 \end{itemize}
 \begin{center}
  \includegraphics[width=1.0\textwidth]{autoextend}
@@ -111,7 +111,7 @@
 \begin{frame}{Related work: knowledge-free}
 
 \begin{itemize}
-\item Adagram~\cite{bartunov2016breaking}
+\item \textbf{Adagram}~\cite{bartunov2016breaking}
 \item Multiple vector representations $\theta$ for each word:
 %\item An bayesian extension of the Skip-gram model:
  $$p(Y,Z,\mathbf{\beta}|X,\alpha,\theta) = \prod_{w=1}^{V} \prod_{k=1}^{\infty} p(\beta_{wk}|\alpha) \prod_{i=1}^N [p(z_i|x_i,\mathbf{\beta}) \prod_{j=1}^C p(y_{ij}|z_i,x_i,\theta)],$$ 
@@ -124,7 +124,7 @@
 \end{itemize}
 
 \pause 
-\item \textbf{See also}: [Neelakantan et al., 2014] and [Li and Jurafsky, 2015]
+\item \alert{\textbf{See also}}: [Neelakantan et al., 2014] and [Li and Jurafsky, 2015]
 
 \end{itemize}
 	
@@ -190,7 +190,7 @@
 \begin{frame}{Summary}
 
 \begin{itemize}
-	\item How to \textbf{induce word senses} and \textbf{semantic classes} from text and synonyms.
+	\item How to \textbf{induce word senses}, \textbf{synsets} and \textbf{semantic classes} from text and synonyms.
     \vspace{1em}
     \pause
     
