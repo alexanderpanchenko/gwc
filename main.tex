@@ -5,6 +5,8 @@
 \showuhhlogoeachframe
 \showsections
 
+\usepackage{booktabs}
+
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{color}
@@ -59,6 +61,9 @@
 
 \maketitle
 
+
+\section{Overview}
+
 \begin{frame}
   \frametitle{Overview}
 
@@ -86,6 +91,7 @@
 \section{Inducing word sense representations}
 
 
+\subsection{Related work}
 \begin{frame}[fragile]
 \frametitle{Related work}
 \begin{center}
@@ -176,18 +182,100 @@
 
 \begin{frame}{Sense embeddings using retrofitting}
 	
+	%\begin{itemize} 
+	 {\footnotesize RepL4NLP@ACL'16 \cite{pelevina-EtAl:2016:RepL4NLP}, LREC'18 \cite{remus:2018}}
+	%\end{itemize}
+	
+	\begin{block}{Prior methods:}
+		\vspace{0.25cm}
+
+	\begin{itemize}	
+	\item Induce inventory by \alert{clustering of word instances} %(Li and Jurafsky, 2015)
+	\item Use \alert{existing} sense inventories %(Rothe and Sch\"{u}tze, 2015)	
+	\end{itemize}
+\end{block}
+
+
+	\begin{block}{Our method:}
+		\vspace{0.25cm}
+
+	\begin{itemize}	
+	\item \textbf{Input:} word embeddings
+	\item \textbf{Output:} word sense embeddings
+	\item \textbf{Word sense induction} by \alert{clustering of word ego-networks}
+	%\item \textbf{Word sense disambiguation} based on the induced sense representations
+
+	\end{itemize}
+\end{block}
+
+
 \end{frame}
 
 \begin{frame}{Sense embeddings using retrofitting}
-	
+\begin{itemize}
+\item From word embeddings to sense embeddings
+\end{itemize}
+\includegraphics[width=\textwidth]{pipeline}
+
 \end{frame}
 
 
 
-\begin{frame}{Sparse sense representations}
+\begin{frame}{Sense embeddings using retrofitting}
+
+\begin{itemize}
+\item Word sense induction using  ego-network clustering
+\end{itemize} 
 	
+\centering
+\begin{figure}
+\includegraphics[width=0.65\textwidth]{table}
+\end{figure}
+
 \end{frame}
 
+
+\begin{frame}{Sense embeddings using retrofitting}
+
+
+\begin{itemize}
+\item Word sense induction using  ego-network clustering
+\end{itemize} 
+
+\end{frame}
+
+
+\begin{frame}{Sense embeddings using retrofitting}
+
+
+{Neighbours of Word and Sense Vectors}
+
+
+\begin{table}
+
+\footnotesize
+\centering
+\begin{tabular}{l|l}
+\toprule
+\bf Vector & \bf \parbox{4cm}{Nearest Neighbours} \\ \midrule
+ table & \parbox{6cm}{\alert{tray}, bottom, diagram, \alert{bucket}, brackets, stack, \alert{basket}, list, parenthesis, \alert{cup}, \alert{trays}, \alert{pile}, \alert{playfield}, bracket, \alert{pot}, drop-down, \alert{cue}, \alert{plate}} \\ \midrule
+  table\#0 & \parbox{6cm}{leftmost\#0,  column\#1,  randomly\#0,  tableau\#1, top-left#0, indent\#1,  bracket\#3,  pointer\#0,  footer\#1, cursor\#1, diagram\#0, grid\#0} \\ \midrule
+   table\#1 & \parbox{6cm}{ \alert{pile\#1,  stool\#1,  tray\#0,  basket\#0,  bowl\#1,  bucket\#0,  box\#0,  cage\#0,  saucer\#3,      mirror\#1,  birdcage\#0,  hole\#0,  pan\#1,  lid\#0} } \\ 
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{itemize}
+	\item Neighbours of the word ``table" and its senses produced by our method.
+	\item The neighbours of the initial vector belong to \textbf{both senses}.
+	\item The neighbours of the sense vectors are \textbf{sense-specific}.   
+\end{itemize}
+
+	
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \begin{frame}{Sparse sense representations}
 	
