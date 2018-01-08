@@ -1,4 +1,4 @@
-\documentclass{beamer}
+\documentclass[usenames,dvipsnames]{beamer}
 
 \usetheme{uhh}
 \showtotalframenumber
@@ -6,7 +6,7 @@
 \showsections
 
 \usepackage{booktabs}
-
+\usepackage[dvipsnames]{xcolor}
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{color}
@@ -92,6 +92,16 @@
 
 
 \subsection{Related work}
+
+\begin{frame}{Word VS sense embeddings}
+
+...
+
+from the Adagram presentations ???
+	
+\end{frame}
+
+
 \begin{frame}[fragile]
 \frametitle{Related work}
 \begin{center}
@@ -120,17 +130,16 @@
 \begin{itemize}
 \item \textbf{Adagram}~\cite{bartunov2016breaking}
 \item Multiple vector representations $\theta$ for each word:
-%\item An bayesian extension of the Skip-gram model:
- $$p(Y,Z,\mathbf{\beta}|X,\alpha,\theta) = \prod_{w=1}^{V} \prod_{k=1}^{\infty} p(\beta_{wk}|\alpha) \prod_{i=1}^N [p(z_i|x_i,\mathbf{\beta}) \prod_{j=1}^C p(y_{ij}|z_i,x_i,\theta)],$$ 
+
+\pause
+ $$p(Y,\textcolor{Cerulean}{Z},\mathbf{\beta}|X,\alert{\alpha},\theta) = \prod_{w=1}^{V} \prod_{k=1}^{\infty} p(\beta_{wk}|\alert{\alpha}) \prod_{i=1}^N [p(\textcolor{Cerulean}{z_i}|x_i,\mathbf{\beta}) \prod_{j=1}^C p(y_{ij}|\textcolor{Cerulean}{z_i},x_i,\theta)],$$ 
 \begin{itemize}
-
-\pause 
-
-\item $\alpha$ -- a meta-parameter controlling number of senses;
-\item $z_i$ -- a hidden variable: a sense index in context; 
-\item $p(\beta_{wk}|\alpha)$ -- probability of the $k$-th sense of the word $w$;
-\item $p(z_i|x_i,\mathbf{\beta})$ -- probability of observing word $x_i$ in the sense $z_i$;
-\item $\prod_{j=1}^C p(y_{ij}|z_i,x_i,\theta)$ -- probability of the context $C$.
+ 
+\item $\textcolor{Cerulean}{z_i}$ -- a hidden variable: a sense index of word $x_i$ in context $C$; 
+\item $\alert{\alpha}$ -- a meta-parameter controlling number of senses.
+%\item $p(\beta_{wk}|\alpha)$ -- probability of the $k$-th sense of the word $w$;
+%\item $p(z_i|x_i,\mathbf{\beta})$ -- probability of observing word $x_i$ in the sense $z_i$;
+%\item $\prod_{j=1}^C p(y_{ij}|z_i,x_i,\theta)$ -- probability of the context $C$.
 \end{itemize}
 
 \pause 
@@ -271,19 +280,11 @@
 
 \begin{tabular}{l|p{9cm}}
 \bf Vector & \bf {Nearest Neighbors} \\ \toprule
- table & $ $ \alert{tray}, bottom, diagram, \alert{bucket}, brackets, stack, \alert{basket}, list, parenthesis, \alert{cup}, \alert{trays}, \alert{pile}, \alert{playfield}, bracket, \alert{pot}, drop-down, \alert{cue}, \alert{plate} \\ \midrule
+ table & $ $ \alert{tray}, \textcolor{Cerulean}{bottom}, \textcolor{Cerulean}{diagram}, \alert{bucket}, \textcolor{Cerulean}{brackets}, \textcolor{Cerulean}{stack}, \alert{basket}, \textcolor{Cerulean}{list}, \textcolor{Cerulean}{parenthesis}, \alert{cup}, \alert{saucer}, \alert{pile}, \alert{playfield}, \textcolor{Cerulean}{bracket}, \alert{pot}, \textcolor{Cerulean}{drop-down}, \alert{cue}, \alert{plate} \\ \midrule
  \pause
-  table\#0 & $ $ leftmost\#0,  column\#1,  randomly\#0,  tableau\#1, top-left\#0, indent\#1,  bracket\#3,  pointer\#0,  footer\#1, cursor\#1, diagram\#0, grid\#0 \\ \midrule
-   table\#1 & $ $ \alert{pile\#1,  stool\#1,  tray\#0,  basket\#0,  bowl\#1,  bucket\#0,  box\#0,  cage\#0,  saucer\#3,      mirror\#1,  birdcage\#0,  hole\#0,  pan\#1,  lid\#0}  \\ 
+  \textcolor{Cerulean}{table\#0} & $ $ \textcolor{Cerulean}{leftmost\#0},  \textcolor{Cerulean}{column\#1},  \textcolor{Cerulean}{tableau\#1},  \textcolor{Cerulean}{indent\#1},  \textcolor{Cerulean}{bracket\#3},  \textcolor{Cerulean}{pointer\#0},  \textcolor{Cerulean}{footer\#1}, \textcolor{Cerulean}{cursor\#1}, \textcolor{Cerulean}{diagram\#0}, \textcolor{Cerulean}{grid\#0} \\ \midrule
+   \alert{table\#1} & $ $ \alert{pile\#1,  stool\#1,  tray\#0,  basket\#0,  bowl\#1,  bucket\#0,  box\#0,  cage\#0,  saucer\#3,      mirror\#1,  pan\#1,  lid\#0}  \\ 
 \end{tabular}
-%\end{table}
-%
-%\begin{itemize}
-%	\item Neighbours of the word ``table" and its senses produced by our method.
-%	\item The neighbours of the initial vector belong to \textbf{both senses}.
-%	\item The neighbours of the sense vectors are \textbf{sense-specific}.   
-%\end{itemize}
-
 	
 
 \end{frame}
@@ -527,27 +528,22 @@ Results of Steffen ... or summarize both SemEval'13
 
 \end{frame}
 
-\begin{frame}{Summary}
+\begin{frame}{Take home messages}
 
 \begin{itemize}
-	\item How to \textbf{induce word senses}, \textbf{synsets} and \textbf{semantic classes} from text and synonyms.
+	\item We can \alert{\textbf{induce word senses}}, \alert{\textbf{synsets}} and \alert{\textbf{semantic classes}} in a knowledge-free way using \textbf{graph clustering} and \textbf{distributional models}.
     \vspace{1em}
     \pause
     
-	\item \textbf{Interpretability can be added} on the top of induced word senses in a model agnostic way. 
+	\item We can make the \alert{\textbf{induced word senses interpretable}} in a knowledge-free way with \textbf{hypernyms}, \textbf{images},  \textbf{definitions}. 
 	\vspace{1em}
     \pause
 	
-	%\item Hypernymy labels \textbf{improve hypernymy extraction}. 
-%	\vspace{1em}
-%	\pause
-	
-	\item Linking induced word senses to lexical resources:
+	\item We can \alert{\textbf{link induced senses to lexical resources}} to
 	\begin{itemize} 
-		\item improves \textbf{performance of WSD};
-		\item can be used to \textbf{enrich lexical resources} with new senses.
+		\item improve \textbf{performance of WSD};
+		\item \textbf{enrich lexical resources} with emerging senses.
 	\end{itemize}
-	
 	
 \end{itemize}
 
@@ -555,38 +551,39 @@ Results of Steffen ... or summarize both SemEval'13
 \end{frame}
 
 
-\begin{frame}{A New Shared Task on WSI\&D}
+\begin{frame}{An ongoing shared task on WSI\&D}
   
   \begin{itemize}
   \item Participate in an \textbf{\alert{ACL SIGSLAV}} sponsored shared task on \textbf{word sense induction and disambiguation} for Russian!
-  
-  
  \end{itemize} 
   
-  \begin{block}{A lexical sample task evaluated using the ARI measure }
-  \begin{itemize}
-  	\item Target word, e.g. ``bank'' (in Russian).
-  	\item Contexts where the word occurs.
-  	\item You need to group the contexts by senses.
-  \end{itemize}
-   \end{block}
-  
-  \pause
+%  \begin{block}{A lexical sample task evaluated using the ARI measure }
+%  \begin{itemize}
+%  	\item Target word, e.g. ``bank'' (in Russian).
+%  	\item Contexts where the word occurs.
+%  	\item You need to group the contexts by senses.
+%  \end{itemize}
+%   \end{block}
+%  
+%  \pause
   \begin{itemize}
     \item \textbf{More details}: \url{http://russe.nlpub.org/2018/wsi}
-  \item You can participate by \textbf{31.01.2018}.
+  %\item You can participate by \textbf{31.01.2018}.
      
   \end{itemize}
   
+  \begin{center}
+  	\includegraphics[width=0.2\textwidth]{acl}
+  \end{center}
 \end{frame}
 
-\begin{frame}{ ... }
-\Huge{\textbf{Thank you! Questions?}}
+\begin{frame}{ Acknowledgments }
+\Huge{\textbf{Thank you! \alert{Questions?}}}
 
 \\ 
 
 {\normalsize This research was supported by}
-\includegraphics[width=0.6\textwidth]{dfg} \includegraphics[width=0.3\textwidth]{daad}
+\includegraphics[width=0.65\textwidth]{dfg} \includegraphics[width=0.3\textwidth]{daad}
 
 \end{frame}
 
