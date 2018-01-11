@@ -49,6 +49,8 @@
 \item Multiple vector representations $\theta$ for each word:
 
 \pause
+%$$p(Y|X,\theta)$$
+
  $$p(Y,\textcolor{Cerulean}{Z},\mathbf{\beta}|X,\alert{\alpha},\theta) = \prod_{w=1}^{V} \prod_{k=1}^{\infty} p(\beta_{wk}|\alert{\alpha}) \prod_{i=1}^N [p(\textcolor{Cerulean}{z_i}|x_i,\mathbf{\beta}) \prod_{j=1}^C p(y_{ij}|\textcolor{Cerulean}{z_i},x_i,\theta)],$$ 
 \begin{itemize}
  
@@ -274,9 +276,10 @@
 
 \alert{\textbf{Unsupervised WSD}} SemEval'13, \textbf{ReprL4NLP}~\cite{pelevina-EtAl:2016:RepL4NLP}:
 \begin{itemize}
-	\item comparable to SOTA, incl. sense embeddings.
+	\item comparable to SOTA, incl. Adagram sense embeddings.
 \end{itemize} 
 
+\pause
 \vspace{2em}
 \alert{\textbf{Semantic relatedness}}, \textbf{LREC'2018}~\cite{remus:2018}:
 \vspace{2em}
@@ -326,8 +329,6 @@
 \begin{itemize}
 	\item comparable to SOTA, incl. sense embeddings.
 \end{itemize} 
-
-\pause
 
 \vspace{2em}
 
