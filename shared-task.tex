@@ -105,3 +105,49 @@
 \end{frame}
 
 
+
+\begin{frame}{A sample from the \textit{bts-rnc} dataset }
+
+{\centering
+\includegraphics[width=.8\textwidth]{figures/bts}
+}	
+\end{frame}
+
+
+
+\begin{frame}{A sample from the \textit{active-dict} dataset }
+
+{\centering
+\includegraphics[width=.8\textwidth]{figures/active}
+}	
+\end{frame}
+
+
+
+\begin{frame}{ \textit{jamsic}: sense induction }
+
+\begin{enumerate}
+	\item \textbf{Get the neighbors} of a target word, e.g. \textbf{``bank''}:
+	\begin{enumerate}
+	\item \alert{lender}
+	\item \textcolor{Cerulean}{river}
+	\item \alert{citybank}
+	\item \textcolor{Cerulean}{slope}
+	\item ...
+	\end{enumerate}
+	
+	\item Get \textbf{similar to ``bank''} and \textbf{dissimilar to \alert{``lender''}}:
+	
+	\begin{enumerate}
+	\item \textcolor{Cerulean}{river}
+	\item \textcolor{Cerulean}{slope}
+	\item \textcolor{Cerulean}{land}
+	\item ...
+	\end{enumerate}
+	 
+\item \textbf{Compute distances} to \alert{\textbf{``lender''}} and \textcolor{Cerulean}{\textbf{``river''}}.
+\end{enumerate}
+
+\end{frame}
+
+
