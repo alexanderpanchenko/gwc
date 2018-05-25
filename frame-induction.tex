@@ -1,0 +1,112 @@
+\section{Induction of semantic frames}
+
+\subsection{}
+
+\begin{frame}{FrameNet: frame ``Kidnapping''}
+
+\begin{center}	
+\includegraphics[width=1.0\textwidth]{figures/fn-kidnap}
+\end{center}
+
+\end{frame}
+
+
+
+\begin{frame}{Frame induction as a triclustering}
+
+\begin{itemize}
+\item \textbf{ACL'2018}~\cite{ustalov2018unsupervised}	
+\end{itemize}
+
+Example of a LU tricluster corresponding to the ``Kidnapping'' frame from FrameNet.
+
+\begin{table}[t]
+\centering
+\begin{tabular}{lll}
+\textbf{FrameNet~~~~~~~} & \textbf{Role~~~~~~~~} & \textbf{Lexical Units (LU)} \\\toprule
+\textit{Perpetrator} & Subject & kidnapper, alien, militant \\ \midrule
+\textit{FEE}         & Verb    & snatch, kidnap, abduct \\ \midrule
+\textit{Victim}      & Object  & son, people, soldier, child \\
+\end{tabular}
+
+\end{table}	
+
+\end{frame}
+
+
+
+\begin{frame}{\textit{Triframes} frame induction}
+
+\vspace{-10pt}
+\begin{algorithmic}
+\REQUIRE{an embedding model $v \in V \rightarrow \vec{v} \in \mathbb{R}^d$,}
+\REQUIRE{a set of SVO triples $T \subseteq V^3$,}
+\REQUIRE{the number of nearest neighbors $k \in \mathbb{N}$,}
+\REQUIRE{a graph clustering algorithm $\textsc{Cluster}$.}
+\pause 
+\ENSURE{a set of triframes $F$.}
+\pause 
+\STATE{$S \gets \{t \!\rightarrow \vec{t} \in \mathbb{R}^{3d} : t \in T\}$}
+\STATE{$E \gets \{(t, t') \in T^2 : t' \in \NN^S_k(\vec{t}), t \neq t'\}$}
+\STATE{$F \gets \emptyset$}
+\FORALL{$C \in \textsc{Cluster}(T, E)$}
+\STATE{$f_s \gets \{s \in V : (s, v, o) \in C\}$}
+\STATE{$f_v \gets \{v \in V : (s, v, o) \in C\}$}
+\STATE{$f_o \gets \{o \in V : (s, v, o) \in C\}$}
+\STATE{$F \gets F \cup \{(f_s, f_v, f_o)\}$}
+\ENDFOR
+\RETURN{$F$}
+\end{algorithmic}
+
+	
+\end{frame}
+
+
+
+\begin{frame}{Evaluation datasets}
+
+
+\begin{tabular}{lrrr}
+\textbf{Dataset} & \textbf{\# instances} & \textbf{\# unique} & \textbf{\# clusters} \\\toprule
+FrameNet Triples   & 99,744 & 94,170 & 383 \\
+Poly. Verb Classes &    246 &    110 & 62 \\
+\end{tabular}
+	
+\end{frame}
+
+
+\begin{frame}{Evaluation settings}
+
+
+\begin{tabular}{lrrr}
+\textbf{Dataset} & \textbf{\# instances} & \textbf{\# unique} & \textbf{\# clusters} \\\toprule
+\textbf{\alert{FrameNet Triples}}   & 99,744 & 94,170 & 383 \\
+Poly. Verb Classes &    246 &    110 & 62 \\
+\end{tabular}
+
+\pause 
+
+\vspace{20pt}
+\textbf{Quality Measures:}
+
+\begin{itemize}
+\item $\nmpu$: normalized modified purity, 
+\item $\nipu$: normalized inverse purity.	
+\end{itemize}
+
+	
+\end{frame}
+
+
+
+\begin{frame}{Results: comparison to state-of-art}
+
+\begin{center}	
+\includegraphics[width=1.0\textwidth]{figures/frames2}
+\end{center}
+
+
+F\textsubscript{1}-scores for \legend{ggplotverb}\,verbs, \legend{ggplotsubject}\,subjects, \legend{ggplotobject}\,objects, \legend{ggplotframe}\,frames
+
+\end{frame}
+
