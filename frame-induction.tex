@@ -50,7 +50,7 @@ Example of a LU tricluster corresponding to the ``Kidnapping'' frame from FrameN
 
 \begin{frame}{An SVO triple graph}
 
-\begin{figure}
+\vspace{-1em}\begin{figure}
   \centering
   \includegraphics[width=.9\textwidth]{figures/lead}
   
@@ -65,9 +65,9 @@ Example of a LU tricluster corresponding to the ``Kidnapping'' frame from FrameN
 \vspace{-10pt}
 \begin{algorithmic}
 \REQUIRE{an embedding model $v \in V \rightarrow \vec{v} \in \mathbb{R}^d$,}
-\REQUIRE{a set of SVO triples $T \subseteq V^3$,}
-\REQUIRE{the number of nearest neighbors $k \in \mathbb{N}$,}
-\REQUIRE{a graph clustering algorithm $\textsc{Cluster}$.}
+\REQUIREP{a set of SVO triples $T \subseteq V^3$,}
+\REQUIREP{the number of nearest neighbors $k \in \mathbb{N}$,}
+\REQUIREP{a graph clustering algorithm $\textsc{Cluster}$.}
 \pause 
 \ENSURE{a set of triframes $F$.}
 \pause 
