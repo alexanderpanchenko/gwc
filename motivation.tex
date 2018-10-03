@@ -33,16 +33,18 @@
 
 
 
-\begin{frame}{Deep Learning: everything is a vector}
+
+
+\begin{frame}{Levels of Linguistic Analysis}
 	\vspace{-15pt}
 	
   \begin{center}
-  	\includegraphics[width=0.59\textwidth]{figures/backprop}
+  	\includegraphics[width=0.5\textwidth]{figures/levels}
   \end{center}
    
-%{  \footnotesize
-%  Image source: \url{https://www.linkedin.com/feed/update/urn:li:activity:6442811914803380224}
-% } 
+{  \tiny
+  Image source: \url{https://commons.wikimedia.org/wiki/File:Major_levels_of_linguistic_structure.svg}
+ } 
 
 \end{frame}
 
@@ -52,10 +54,10 @@
 	\vspace{-15pt}
 	
   \begin{center}
-  	\includegraphics[width=0.59\textwidth]{figures/levels.svg}
+  	\includegraphics[width=0.5\textwidth]{figures/levels2}
   \end{center}
    
-{  \footnotesize
+{  \tiny
   Image source: \url{https://commons.wikimedia.org/wiki/File:Major_levels_of_linguistic_structure.svg}
  } 
 
@@ -68,12 +70,75 @@
 	
 	\begin{itemize}
 		\item (Written) language is a \alert{symbolic system}
+		\item \textbf{Semantic level}: typed weighted graphs of concepts
+		\begin{itemize}
+				\item Co-occurrence networks
+ 
+		\item Lexical databases, e.g. WordNet
+		\item Thesauri, e.g. NLM
+		\item Ontologies, e.g. DBPedia
+		\item Associative networks, e.g.  Edinburgh Associative Thesaurus
+		\item ...
+		
+		\end{itemize}
 	\end{itemize}	
 	
 \end{frame}
 
 
-%
+
+
+
+\begin{frame}{Semantic Graphs}
+	
+	\begin{center}
+  	\includegraphics[width=.99\textwidth]{figures/graph1}
+  \end{center}	
+\end{frame}
+
+
+
+
+\begin{frame}{Semantic Graphs}
+	
+	\begin{center}
+  	\includegraphics[width=.99\textwidth]{figures/graph2}
+  \end{center}	
+\end{frame}
+
+
+\begin{frame}{The new brave world of Deep Learning}
+	\vspace{-15pt}
+	
+	
+\begin{columns}
+\begin{column}{0.6\textwidth}
+   
+ \begin{center}
+  	\includegraphics[width=1.0\textwidth]{figures/backprop}
+  \end{center}
+  
+\end{column}
+\begin{column}{0.4\textwidth} 
+  
+ \begin{itemize}
+ \item ''Anti-connectivism'' 
+ \item End-to-end learning: \alert{symbolic representations aren't needed}
+ \pause 
+ 
+ \item Word embeddings lookup (at most)
+ 	
+ \end{itemize}
+
+  
+\end{column}
+\end{columns}
+
+\end{frame}
+
+
+
+
 \begin{frame}{Graph Matrix Duality}
 	\vspace{-25pt}
 	
@@ -96,16 +161,16 @@
 \end{frame}
 
 
-\begin{frame}{Goal}
+\begin{frame}{Goal: Linguistic Structures in DL}
 
   \begin{enumerate}
-  	\item Learn the interpretable symbolic structures from text in an unsupervised way, which are \alert{more complex than tokens and lemmas}.
+  	\item \textbf{Learn interpretable symbolic structures from text} in an unsupervised way, which are \alert{more complex than words}.
   	\pause 
-  	\item Represent the learned structures in the vector form.
+  	\item \textbf{Represent the learned structures} in a vector space.
   	\pause 
-  	\item Use the vector representations instead/in addition to word embedding the deep learning applications. 
+  	\item \textbf{Use the vector representations} instead/in addition to word embedding the deep learning applications. \alert{Lookup of word senses, frames, etc.}
   	\pause 
-  	\item More complex structures could improve performance, but also provide better interpretability of the deep learning models. 
+  	\item More complex structures could improve performance, but also provide \textbf{better interpretability of the deep learning models}. 
   	
   \end{enumerate}
 
