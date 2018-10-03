@@ -1,0 +1,11 @@
+
+*.aux
+*.bbl
+*.blg
+.texpadtmp/main.log
+.texpadtmp/main.nav
+.texpadtmp/main.out
+.texpadtmp/main.snm
+.texpadtmp/main.synctex.gz
+.texpadtmp/main.toc
+overview.pdf
