@@ -95,7 +95,7 @@ $$
 \begin{frame}{Graph embeddings using similarities}
 
 
-\textit{path2vec}: Approximating \alert{\textbf{Structural Node Similarities}} with \textbf{Node Embeddings}:
+\textit{path2vec} (\url{arxiv.org/abs/1808.05611}): Approximating \alert{\textbf{Structural Node Similarities}} with \textbf{Node Embeddings}:
 
 $$
 J = \frac{1}{|T|}  \sum_{ (v_i, v_j) \in T }  (\mathbf{v}_i \cdot \mathbf{v}_j - sim(v_i, v_j) )^2,
@@ -244,6 +244,35 @@ LCH & 0.540 & 0.535 & 0.536 \\
 \end{tabular}
 \end{table}
 	
+\end{frame}
+
+
+
+
+\begin{frame}{Improved Model and Results}
+
+%
+%Original model:
+%$$
+%\mathcal{L} = \frac{1}{|T|}  \sum_{ (v_i, v_j) \in T }  (\mathbf{v}_i \cdot \mathbf{v}_j - sim(v_i, v_j) )^2,
+%$$
+%
+%
+%Improved model:
+$$
+\mathcal{L} = \frac{1}{|T|}  \sum_{ (v_i, v_j) \in T } \left( (\mathbf{v}_i \cdot \mathbf{v}_j - sim(v_i, v_j) )^2  + \alert{\mathbf{v}_i \cdot \mathbf{v}_{in}} + \alert{\mathbf{v}_j \cdot \mathbf{v}_{jm}} \right) ,
+$$
+
+
+where:
+
+\begin{itemize}
+	\item $sim(v_i, v_j)$ - the value of a `gold' similarity measure between a pair of nodes $v_i$ and $v_j$;
+	\item $\mathbf{v}_i$ - an embeddings of node;
+	\item $T$ - training batch; 
+	\item \alert{$v_{in}$ - random adjacent node of $v_i$}.
+\end{itemize}
+
 \end{frame}
 
 
