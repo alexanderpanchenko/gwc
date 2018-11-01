@@ -51,14 +51,24 @@
 \pause
 %$$p(Y|X,\theta)$$
 
+\end{itemize}
+
+\vspace{-20pt}
+
  $$p(Y,\textcolor{Cerulean}{Z},\mathbf{\beta}|X,\alert{\alpha},\theta) = \prod_{w=1}^{V} \prod_{k=1}^{\infty} p(\beta_{wk}|\alert{\alpha}) \prod_{i=1}^N [p(\textcolor{Cerulean}{z_i}|x_i,\mathbf{\beta}) \prod_{j=1}^C p(y_{ij}|\textcolor{Cerulean}{z_i},x_i,\theta)],$$ 
-\begin{itemize}
  
+\vspace{-10pt}
+
+\begin{itemize}
+	
+	\item where
+\begin{itemize}
+
 \item $\textcolor{Cerulean}{z_i}$ -- a hidden variable: a sense index of word $x_i$ in context $C$; 
 \item $\alert{\alpha}$ -- a meta-parameter controlling number of senses.
-%\item $p(\beta_{wk}|\alpha)$ -- probability of the $k$-th sense of the word $w$;
-%\item $p(z_i|x_i,\mathbf{\beta})$ -- probability of observing word $x_i$ in the sense $z_i$;
-%\item $\prod_{j=1}^C p(y_{ij}|z_i,x_i,\theta)$ -- probability of the context $C$.
+\item $p(\beta_{wk}|\alpha)$ -- probability of the $k$-th sense of the word $w$;
+\item $p(z_i|x_i,\mathbf{\beta})$ -- probability of observing word $x_i$ in the sense $z_i$;
+\item $\prod_{j=1}^C p(y_{ij}|z_i,x_i,\theta)$ -- probability of the context $C$.
 \end{itemize}
 
 \pause 
@@ -88,15 +98,15 @@
 \end{frame}
 
 
-
-\begin{frame}[fragile]
-\frametitle{Related work: Chinese Whispers\#1}
-\begin{center}
- \includegraphics[height=0.5\textwidth]{figures/cw}
- 
-  {\tiny * source of the image: \url{http://ic.pics.livejournal.com/blagin_anton/33716210/2701748/2701748_800.jpg}}
- \end{center}
-\end{frame}
+%
+%\begin{frame}[fragile]
+%\frametitle{Related work: Chinese Whispers\#1}
+%\begin{center}
+% \includegraphics[height=0.5\textwidth]{figures/cw}
+% 
+%  {\tiny * source of the image: \url{http://ic.pics.livejournal.com/blagin_anton/33716210/2701748/2701748_800.jpg}}
+% \end{center}
+%\end{frame}
 
 
 
@@ -150,37 +160,37 @@
 \end{frame}
 
 
-
-\begin{frame}{Sense embeddings using retrofitting}
-	
-	%\begin{itemize} 
-	 {\footnotesize \textbf{RepL4NLP@ACL'16} \cite{pelevina-EtAl:2016:RepL4NLP}, \textbf{LREC'18} \cite{remus:2018}}
-	%\end{itemize}
-	
-	\begin{block}{Prior methods:}
-		\vspace{0.25cm}
-
-	\begin{itemize}	
-	\item Induce inventory by \alert{clustering of word instances} %(Li and Jurafsky, 2015)
-	\item Use \alert{existing} sense inventories %(Rothe and Sch\"{u}tze, 2015)	
-	\end{itemize}
-\end{block}
-
-
-	\begin{block}{Our method:}
-		\vspace{0.25cm}
-
-	\begin{itemize}	
-	\item \textbf{Input:} word embeddings
-	\item \textbf{Output:} word sense embeddings
-	\item \textbf{Word sense induction} by \alert{clustering of word ego-networks}
-	%\item \textbf{Word sense disambiguation} based on the induced sense representations
-
-	\end{itemize}
-\end{block}
-
-
-\end{frame}
+%
+%\begin{frame}{Sense embeddings using retrofitting}
+%	
+%	%\begin{itemize} 
+%	 {\footnotesize \textbf{RepL4NLP@ACL'16} \cite{pelevina-EtAl:2016:RepL4NLP}, \textbf{LREC'18} \cite{remus:2018}}
+%	%\end{itemize}
+%	
+%	\begin{block}{Prior methods:}
+%		\vspace{0.25cm}
+%
+%	\begin{itemize}	
+%	\item Induce inventory by \alert{clustering of word instances} %(Li and Jurafsky, 2015)
+%	\item Use \alert{existing} sense inventories %(Rothe and Sch\"{u}tze, 2015)	
+%	\end{itemize}
+%\end{block}
+%
+%
+%	\begin{block}{Our method:}
+%		\vspace{0.25cm}
+%
+%	\begin{itemize}	
+%	\item \textbf{Input:} word embeddings
+%	\item \textbf{Output:} word sense embeddings
+%	\item \textbf{Word sense induction} by \alert{clustering of word ego-networks}
+%	%\item \textbf{Word sense disambiguation} based on the induced sense representations
+%
+%	\end{itemize}
+%\end{block}
+%
+%
+%\end{frame}
 
 \begin{frame}{Sense embeddings using retrofitting}
 \begin{itemize}
@@ -318,144 +328,165 @@
 
 
 
-
-\begin{frame}{Sense embeddings using retrofitting}
-
-\alert{\textbf{Unsupervised WSD}} SemEval'13, \textbf{ReprL4NLP}~\cite{pelevina-EtAl:2016:RepL4NLP}:
-
-
-
-	\vspace{-0.4cm}
-	\begin{table}
-		\scriptsize
-
-		\begin{tabular}{l|ccc|cc}
-			\bf Model & \bf Jacc. & \bf Tau & \bf WNDCG & \bf F.NMI & \bf F.B-Cubed \\ 
-			\midrule
-			
-			AI-KU (add1000) & 0.176 & 0.609 & 0.205 & 0.033 & 0.317 \\
-			AI-KU & 0.176 & 0.619 & 0.393 & 0.066 & 0.382 \\
-			AI-KU (remove5-add1000) & 0.228 & 0.654 & 0.330 & 0.040 & 0.463 \\
-			Unimelb (5p) & 0.198 & 0.623 & 0.374 & 0.056 & 0.475 \\
-			Unimelb (50k) & 0.198 & 0.633 & 0.384 & 0.060 & 0.494 \\
-			UoS (\#WN senses) & 0.171 & 0.600 & 0.298 & 0.046 & 0.186 \\
-			UoS (top-3) & 0.220 & 0.637 & 0.370 & 0.044 & 0.451 \\
-			La Sapienza (1) & 0.131 & 0.544 & 0.332 & --  & -- \\
-			La Sapienza (2) & 0.131 & 0.535 & 0.394 & -- & -- \\ \midrule
-			AdaGram, $\alpha$ = 0.05, 100 dim & 0.274 & 0.644  & 0.318  & 0.058  & 0.470  \\ \midrule
-			\alert{w2v}  & 0.197 & 0.615 & 0.291 & 0.011 & 0.615 \\
-			%& \wv   -- weighted -- $$p=2$$ -- filter2 -- sw  & 0.197 & 0.614 & 0.291 & 0.012 & 0.615 \\
-			\alert{w2v (nouns)} & 0.179 & 0.626 & 0.304 & 0.011 & 0.623 \\
-			
-			\alert{JBT} & 0.205 & 0.624 & 0.291 & 0.017 & 0.598\\
-			\alert{JBT (nouns)} & 0.198 & 0.643 & 0.310 & 0.031 & 0.595\\
-			\alert{TWSI (nouns)} & 0.215 & 0.651 & 0.318 & 0.030 & 0.573 \\ 
-				
-		\end{tabular}
-		\end{table}
-\end{frame}
-
-
-
-
-
-\begin{frame}{Sense embeddings using retrofitting}
-
-\vspace{2em}
-\alert{\textbf{Semantic relatedness}}, \textbf{LREC'2018}~\cite{remus:2018}:
-\vspace{2em}
-\begin{table}
-    \tiny
- 	
- 	\def\arraystretch{1.2}% 
- 	\setlength{\arraycolsep}{3pt}
- 	
- 	$$
- 	\begin{array}{rll|ll|ll|ll|ll|ll|ll}
- 	  & \rotatebox{80}{\textsc{autoextend}\hspace{-10em}} 
- 	  & \rotatebox{80}{\textsc{adagram}\hspace{-10em}} 
- 	  & ~\rotatebox{80}{\textsc{SGNS}\hspace{-10em}} 
- 	  & \rotatebox{80}{\textsc{.}\hspace{-10em}} 
- 	  & \rotatebox{80}{\textsc{glove}\hspace{-10em}} 
- 	  & \rotatebox{80}{\textsc{.}\hspace{-10em}} 
- 	  & \rotatebox{80}{\textsc{sympat}\hspace{-10em}} 
- 	  & \rotatebox{80}{\textsc{.}\hspace{-10em}} 
- 	  & \rotatebox{80}{\textsc{LSAbow}\hspace{-10em}} 
- 	  & \rotatebox{80}{\textsc{.}\hspace{-10em}}
- 	  & \rotatebox{80}{\textsc{LSAhal}\hspace{-10em}}
-	  & \rotatebox{80}{\textsc{.}\hspace{-10em}}
-	  & ~~\rotatebox{80}{\textsc{paragramSL}\hspace{-10em}} 
- 	  & \rotatebox{80}{\textsc{.}\hspace{-10em}}  
- 	  \\
-   	 \textsc{SimLex999}  & 0.45 & 0.29 ~~&~ 0.44 &  & 0.37 &  & 0.54 &  & 0.30 &  & 0.27 & & ~ {0.68} &  \\
-   	 \textsc{MEN} & 0.72 & 0.67 &~   0.77 &  & 0.73 &  & 0.53 &  & 0.67 &  & 0.71 &  &~ 0.77 &  \\
-   	 \textsc{SimVerb} & 0.43 & 0.27 &~   0.36 &  & 0.23 &  & 0.37 &  & 0.15 &  & 0.19 &  &~ 0.53 &  \\
-   	 \textsc{WordSim353} & 0.58 & 0.61 &~   {0.70} &  & 0.61 &  & 0.47 & & {0.67} &  & 0.59 & &~ 0.72 & \\ 
-
-   	 \textsc{SimLex999-N}  & 0.44 & 0.33 ~~&~ 0.45 &  & 0.39 &  & 0.48 &  & 0.32 & & 0.34 & & {0.68} & \\
-   	 \textsc{MEN-N} 		 & 0.72 & 0.68 &~   0.77 & \_\_\_\_ & 0.76 & \_\_\_\_ & 0.57 & \_\_\_\_ & 0.71 & \_\_\_\_ & 0.73 & \_\_\_\_ &~ 0.78 & \_\_\_\_ \\
- 	\end{array}
- 	$$
- 
- \end{table}
-
-
-\end{frame}
+%
+%\begin{frame}{Sense embeddings using retrofitting}
+%
+%\alert{\textbf{Unsupervised WSD}} SemEval'13, \textbf{ReprL4NLP}~\cite{pelevina-EtAl:2016:RepL4NLP}:
+%
+%
+%
+%	\vspace{-0.4cm}
+%	\begin{table}
+%		\scriptsize
+%
+%		\begin{tabular}{l|ccc|cc}
+%			\bf Model & \bf Jacc. & \bf Tau & \bf WNDCG & \bf F.NMI & \bf F.B-Cubed \\ 
+%			\midrule
+%			
+%			AI-KU (add1000) & 0.176 & 0.609 & 0.205 & 0.033 & 0.317 \\
+%			AI-KU & 0.176 & 0.619 & 0.393 & 0.066 & 0.382 \\
+%			AI-KU (remove5-add1000) & 0.228 & 0.654 & 0.330 & 0.040 & 0.463 \\
+%			Unimelb (5p) & 0.198 & 0.623 & 0.374 & 0.056 & 0.475 \\
+%			Unimelb (50k) & 0.198 & 0.633 & 0.384 & 0.060 & 0.494 \\
+%			UoS (\#WN senses) & 0.171 & 0.600 & 0.298 & 0.046 & 0.186 \\
+%			UoS (top-3) & 0.220 & 0.637 & 0.370 & 0.044 & 0.451 \\
+%			La Sapienza (1) & 0.131 & 0.544 & 0.332 & --  & -- \\
+%			La Sapienza (2) & 0.131 & 0.535 & 0.394 & -- & -- \\ \midrule
+%			AdaGram, $\alpha$ = 0.05, 100 dim & 0.274 & 0.644  & 0.318  & 0.058  & 0.470  \\ \midrule
+%			\alert{w2v}  & 0.197 & 0.615 & 0.291 & 0.011 & 0.615 \\
+%			%& \wv   -- weighted -- $$p=2$$ -- filter2 -- sw  & 0.197 & 0.614 & 0.291 & 0.012 & 0.615 \\
+%			\alert{w2v (nouns)} & 0.179 & 0.626 & 0.304 & 0.011 & 0.623 \\
+%			
+%			\alert{JBT} & 0.205 & 0.624 & 0.291 & 0.017 & 0.598\\
+%			\alert{JBT (nouns)} & 0.198 & 0.643 & 0.310 & 0.031 & 0.595\\
+%			\alert{TWSI (nouns)} & 0.215 & 0.651 & 0.318 & 0.030 & 0.573 \\ 
+%				
+%		\end{tabular}
+%		\end{table}
+%\end{frame}
+%
 
 
 
-\begin{frame}{Sense embeddings using retrofitting}
+%
+%\begin{frame}{Sense embeddings using retrofitting}
+%
+%\vspace{2em}
+%\alert{\textbf{Semantic relatedness}}, \textbf{LREC'2018}~\cite{remus:2018}:
+%\vspace{2em}
+%\begin{table}
+%    \tiny
+% 	
+% 	\def\arraystretch{1.2}% 
+% 	\setlength{\arraycolsep}{3pt}
+% 	
+% 	$$
+% 	\begin{array}{rll|ll|ll|ll|ll|ll|ll}
+% 	  & \rotatebox{80}{\textsc{autoextend}\hspace{-10em}} 
+% 	  & \rotatebox{80}{\textsc{adagram}\hspace{-10em}} 
+% 	  & ~\rotatebox{80}{\textsc{SGNS}\hspace{-10em}} 
+% 	  & \rotatebox{80}{\textsc{.}\hspace{-10em}} 
+% 	  & \rotatebox{80}{\textsc{glove}\hspace{-10em}} 
+% 	  & \rotatebox{80}{\textsc{.}\hspace{-10em}} 
+% 	  & \rotatebox{80}{\textsc{sympat}\hspace{-10em}} 
+% 	  & \rotatebox{80}{\textsc{.}\hspace{-10em}} 
+% 	  & \rotatebox{80}{\textsc{LSAbow}\hspace{-10em}} 
+% 	  & \rotatebox{80}{\textsc{.}\hspace{-10em}}
+% 	  & \rotatebox{80}{\textsc{LSAhal}\hspace{-10em}}
+%	  & \rotatebox{80}{\textsc{.}\hspace{-10em}}
+%	  & ~~\rotatebox{80}{\textsc{paragramSL}\hspace{-10em}} 
+% 	  & \rotatebox{80}{\textsc{.}\hspace{-10em}}  
+% 	  \\
+%   	 \textsc{SimLex999}  & 0.45 & 0.29 ~~&~ 0.44 &  & 0.37 &  & 0.54 &  & 0.30 &  & 0.27 & & ~ {0.68} &  \\
+%   	 \textsc{MEN} & 0.72 & 0.67 &~   0.77 &  & 0.73 &  & 0.53 &  & 0.67 &  & 0.71 &  &~ 0.77 &  \\
+%   	 \textsc{SimVerb} & 0.43 & 0.27 &~   0.36 &  & 0.23 &  & 0.37 &  & 0.15 &  & 0.19 &  &~ 0.53 &  \\
+%   	 \textsc{WordSim353} & 0.58 & 0.61 &~   {0.70} &  & 0.61 &  & 0.47 & & {0.67} &  & 0.59 & &~ 0.72 & \\ 
+%
+%   	 \textsc{SimLex999-N}  & 0.44 & 0.33 ~~&~ 0.45 &  & 0.39 &  & 0.48 &  & 0.32 & & 0.34 & & {0.68} & \\
+%   	 \textsc{MEN-N} 		 & 0.72 & 0.68 &~   0.77 & \_\_\_\_ & 0.76 & \_\_\_\_ & 0.57 & \_\_\_\_ & 0.71 & \_\_\_\_ & 0.73 & \_\_\_\_ &~ 0.78 & \_\_\_\_ \\
+% 	\end{array}
+% 	$$
+% 
+% \end{table}
+%
+%
+%\end{frame}
 
-\alert{\textbf{Unsupervised WSD}} SemEval'13, \textbf{ReprL4NLP}~\cite{pelevina-EtAl:2016:RepL4NLP}:
+\begin{frame}{Evaluation: Key results}
+
 \begin{itemize}
-	\item comparable to SOTA, incl. sense embeddings.
-\end{itemize} 
-
-\vspace{2em}
-
-\alert{\textbf{Semantic relatedness}}, \textbf{LREC'2018}~\cite{remus:2018}:
-\vspace{2em}
-\begin{table}
-    \tiny
- 	
- 	\def\arraystretch{1.2}% 
- 	\setlength{\arraycolsep}{3pt}
- 	
- 	$$
- 	\begin{array}{rll|ll|ll|ll|ll|ll|ll}
- 	  & \rotatebox{80}{\textsc{autoextend}\hspace{-10em}} 
- 	  & \rotatebox{80}{\textsc{adagram}\hspace{-10em}} 
- 	  & ~\rotatebox{80}{\textsc{SGNS}\hspace{-10em}} 
- 	  & \rotatebox{80}{\textsc{SGNS\alert{+senses}}\hspace{-10em}} 
- 	  & \rotatebox{80}{\textsc{glove}\hspace{-10em}} 
- 	  & \rotatebox{80}{\textsc{glove\alert{+senses}}\hspace{-10em}} 
- 	  & \rotatebox{80}{\textsc{sympat}\hspace{-10em}} 
- 	  & \rotatebox{80}{\textsc{sympat\alert{+senses}}\hspace{-10em}} 
- 	  & \rotatebox{80}{\textsc{LSAbow}\hspace{-10em}} 
- 	  & \rotatebox{80}{\textsc{LSAbow\alert{+senses}}\hspace{-10em}}
- 	  & \rotatebox{80}{\textsc{LSAhal}\hspace{-10em}}
-	  & \rotatebox{80}{\textsc{LSAhal\alert{+senses}}\hspace{-10em}}
-	  & ~~\rotatebox{80}{\textsc{paragramSL}\hspace{-10em}} 
- 	  & \rotatebox{80}{\textsc{paragramSL\alert{+senses}}\hspace{-10em}}  
- 	  \\
-   	 \textsc{SimLex999}  & 0.45 & 0.29 ~~&~ 0.44 & \mathbf{0.46} & 0.37 & \bf0.41 & 0.54 & \mathbf{0.55} & 0.30 & \bf0.39 & 0.27 & \bf0.38 ~& \mathbf{0.68} & {0.64} \\
-   	 \textsc{MEN} 		 & 0.72 & 0.67 &~   0.77 & \mathbf{0.78} & 0.73 & \bf0.77 & 0.53 & \bf0.68 & 0.67 & \bf0.70 & 0.71 & \bf0.74 &~ 0.77 & \bf0.80  \\
-   	 \textsc{SimVerb} 	 & 0.43 & 0.27 &~   0.36 & \bf0.39 & 0.23 & \bf0.30 & 0.37 & \bf0.45 & 0.15 & \bf0.22 & 0.19 & \bf0.28 & 0.53 & 0.53 \\
-   	 \textsc{WordSim353} & 0.58 & 0.61 &~   \mathbf{0.70} & 0.69 & 0.61 & \bf0.65 & 0.47 & \bf0.62 & \mathbf{0.67} & 0.66 & 0.59 & \bf0.63 &~ 0.72 & \mathbf{0.73} \\ 
-
-   	 \textsc{SimLex999-N}  & 0.44 & 0.33 ~~&~ 0.45 & \bf0.50 & 0.39 & \bf0.47 & 0.48 & \bf0.55 & 0.32 & \bf0.46 & 0.34 & \bf 0.44 & \mathbf{0.68} & {0.66} \\
-   	 \textsc{MEN-N} 		 & 0.72 & 0.68 &~   0.77 & \mathbf{0.79} & 0.76 & \bf0.80 & 0.57 & \bf0.74 & 0.71 & \mathbf{0.73} & 0.73 & \bf0.76 &~ 0.78 & \bf 0.81 \\
- 	\end{array}
- 	$$
- 
- \end{table}
-%\vspace{-1em}
-%\begin{itemize}
-%
-%\item Sense-aware similarities are marked with \alert{\textsc{+SENSES}}.
-%\item These results are using a sense inventory based on \textbf{sparse dependency features} (JoBimText).
-%
-%\end{itemize}
-
+	\item \alert{\textbf{Word Sense Induction}} task~\cite{pelevina-EtAl:2016:RepL4NLP}:
+	\begin{itemize}
+	\item SemEval  SemEval'13 dataset;
+	\item Performs comparably to SOTA (by 2016)
+	\item ... including neural models. 
+	\end{itemize}
+	
+	\pause
+	\item \alert{\textbf{Semantic Similarity}} task~\cite{remus:2018}:
+	\begin{itemize}
+	\item SimLex, WordSim353, MEN and other datasets;
+	\item Improves the results compared to the original word embeddigns
+	\item ... across different models (GloVe, word2vec, ...). 
+	\end{itemize}
+\end{itemize}
+	
 \end{frame}
+
+%
+%
+%\begin{frame}{Sense embeddings using retrofitting}
+%
+%\alert{\textbf{Unsupervised WSD}} SemEval'13, \textbf{ReprL4NLP}~\cite{pelevina-EtAl:2016:RepL4NLP}:
+%\begin{itemize}
+%	\item comparable to SOTA, incl. sense embeddings.
+%\end{itemize} 
+%
+%\vspace{2em}
+%
+%\alert{\textbf{Semantic relatedness}}, \textbf{LREC'2018}~\cite{remus:2018}:
+%\vspace{2em}
+%\begin{table}
+%    \tiny
+% 	
+% 	\def\arraystretch{1.2}% 
+% 	\setlength{\arraycolsep}{3pt}
+% 	
+% 	$$
+% 	\begin{array}{rll|ll|ll|ll|ll|ll|ll}
+% 	  & \rotatebox{80}{\textsc{autoextend}\hspace{-10em}} 
+% 	  & \rotatebox{80}{\textsc{adagram}\hspace{-10em}} 
+% 	  & ~\rotatebox{80}{\textsc{SGNS}\hspace{-10em}} 
+% 	  & \rotatebox{80}{\textsc{SGNS\alert{+senses}}\hspace{-10em}} 
+% 	  & \rotatebox{80}{\textsc{glove}\hspace{-10em}} 
+% 	  & \rotatebox{80}{\textsc{glove\alert{+senses}}\hspace{-10em}} 
+% 	  & \rotatebox{80}{\textsc{sympat}\hspace{-10em}} 
+% 	  & \rotatebox{80}{\textsc{sympat\alert{+senses}}\hspace{-10em}} 
+% 	  & \rotatebox{80}{\textsc{LSAbow}\hspace{-10em}} 
+% 	  & \rotatebox{80}{\textsc{LSAbow\alert{+senses}}\hspace{-10em}}
+% 	  & \rotatebox{80}{\textsc{LSAhal}\hspace{-10em}}
+%	  & \rotatebox{80}{\textsc{LSAhal\alert{+senses}}\hspace{-10em}}
+%	  & ~~\rotatebox{80}{\textsc{paragramSL}\hspace{-10em}} 
+% 	  & \rotatebox{80}{\textsc{paragramSL\alert{+senses}}\hspace{-10em}}  
+% 	  \\
+%   	 \textsc{SimLex999}  & 0.45 & 0.29 ~~&~ 0.44 & \mathbf{0.46} & 0.37 & \bf0.41 & 0.54 & \mathbf{0.55} & 0.30 & \bf0.39 & 0.27 & \bf0.38 ~& \mathbf{0.68} & {0.64} \\
+%   	 \textsc{MEN} 		 & 0.72 & 0.67 &~   0.77 & \mathbf{0.78} & 0.73 & \bf0.77 & 0.53 & \bf0.68 & 0.67 & \bf0.70 & 0.71 & \bf0.74 &~ 0.77 & \bf0.80  \\
+%   	 \textsc{SimVerb} 	 & 0.43 & 0.27 &~   0.36 & \bf0.39 & 0.23 & \bf0.30 & 0.37 & \bf0.45 & 0.15 & \bf0.22 & 0.19 & \bf0.28 & 0.53 & 0.53 \\
+%   	 \textsc{WordSim353} & 0.58 & 0.61 &~   \mathbf{0.70} & 0.69 & 0.61 & \bf0.65 & 0.47 & \bf0.62 & \mathbf{0.67} & 0.66 & 0.59 & \bf0.63 &~ 0.72 & \mathbf{0.73} \\ 
+%
+%   	 \textsc{SimLex999-N}  & 0.44 & 0.33 ~~&~ 0.45 & \bf0.50 & 0.39 & \bf0.47 & 0.48 & \bf0.55 & 0.32 & \bf0.46 & 0.34 & \bf 0.44 & \mathbf{0.68} & {0.66} \\
+%   	 \textsc{MEN-N} 		 & 0.72 & 0.68 &~   0.77 & \mathbf{0.79} & 0.76 & \bf0.80 & 0.57 & \bf0.74 & 0.71 & \mathbf{0.73} & 0.73 & \bf0.76 &~ 0.78 & \bf 0.81 \\
+% 	\end{array}
+% 	$$
+% 
+% \end{table}
+%%\vspace{-1em}
+%%\begin{itemize}
+%%
+%%\item Sense-aware similarities are marked with \alert{\textsc{+SENSES}}.
+%%\item These results are using a sense inventory based on \textbf{sparse dependency features} (JoBimText).
+%%
+%%\end{itemize}
+%
+%\end{frame}
 
