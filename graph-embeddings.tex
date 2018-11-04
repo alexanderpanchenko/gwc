@@ -38,7 +38,7 @@ From a \textbf{survey on graph embeddings}~\cite{hamilton2017representation}:
 
 
 
-\begin{frame}{Learning with an ``autoencoder''}
+\begin{frame}{Learning with an ''autoencoder''}
 
 From a \textbf{survey on graph embeddings}~\cite{hamilton2017representation}:
 
@@ -69,7 +69,7 @@ From a \textbf{survey on graph embeddings}~\cite{hamilton2017representation}:
 
 \begin{frame}{Graph embeddings using similarities}
 
-An submitted joint work with Andrei Kutuzov and Chris Biemann:
+%An submitted joint work with Andrei Kutuzov and Chris Biemann:
 
 
 \begin{itemize}
@@ -94,20 +94,36 @@ $$
 
 \begin{frame}{Graph embeddings using similarities}
 
-
-\textit{path2vec} (\url{arxiv.org/abs/1808.05611}): Approximating \alert{\textbf{Structural Node Similarities}} with \textbf{Node Embeddings}:
+\textbf{path2vec} model (\url{arxiv.org/abs/1808.05611}): 
 
 $$
-J = \frac{1}{|T|}  \sum_{ (v_i, v_j) \in T }  (\mathbf{v}_i \cdot \mathbf{v}_j - sim(v_i, v_j) )^2,
+\mathcal{L} = \frac{1}{|T|}  \sum_{ (v_i, v_j) \in T } \left( (\mathbf{v}_i^T \mathbf{v}_j - sim(v_i, v_j) )^2  + \alpha \mathbf{v}_i^T \mathbf{v}_{in} + \alpha \mathbf{v}_j^T \mathbf{v}_{jm} \right) ,
 $$
 
-where:
+%where:
 
 \begin{itemize}
-	\item $sim(v_i, v_j)$ - the value of a `gold' similarity measure between a pair of nodes $v_i$ and $v_j$;
+	\item $sim(v_i, v_j)$ - the value of a ''gold'' similarity measure between a pair of nodes $(v_i, v_j)$;
 	\item $\mathbf{v}_i$ - an embeddings of node;
-	\item $T$ - training batch.
+	\item $T$ - training batch; 
+	\item $v_{in}$ - random adjacent node of $v_i$;
+	\item $\alpha$ - a small regularization coefficient, e.g. $0.001$.
 \end{itemize}
+
+
+
+%
+%$$
+%J = \frac{1}{|T|}  \sum_{ (v_i, v_j) \in T }  (\mathbf{v}_i \cdot \mathbf{v}_j - sim(v_i, v_j) )^2,
+%$$
+%
+%where:
+%
+%\begin{itemize}
+%	\item $sim(v_i, v_j)$ - the value of a `gold' similarity measure between a pair of nodes $v_i$ and $v_j$;
+%	\item $\mathbf{v}_i$ - an embeddings of node;
+%	\item $T$ - training batch.
+%\end{itemize}
 
 \end{frame}
 
@@ -178,9 +194,9 @@ Raw WordNet LCH & 0.513  \\
 node2vec { \cite{grover2016node2vec}} & 0.450  \\
 Deepwalk { \cite{perozzi2014deepwalk}} & 0.533  \\
 FSE { \cite{subercaze:2015}} & \textbf{0.556}  \\
-path2vec JCN-SemCor & 0.526  \\
-path2vec JCN-Brown & 0.487  \\
-path2vec LCH & 0.522  \\
+path2vec JCN-SemCor & 0.549  \\
+path2vec JCN-Brown & 0.540  \\
+path2vec LCH & 0.540  \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -191,88 +207,89 @@ path2vec LCH & 0.522  \\
 
 \begin{frame}{Results: SimLex999 dataset}
 
-\textbf{JCN (left) and LCH (right)}:
+%\textbf{path2vec JCN-SemCor (no regularizers)}
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.49\textwidth]{figures/jcn-semcor-thresh01-near50_dynamic_synsets.png}
-     \includegraphics[width=0.49\textwidth]{figures/lch-thresh15-near50_dynamic_synsets.png}
+    \includegraphics[width=0.79\textwidth]{figures/jcn-semcor-thresh01-near50_dynamic_synsets.png}
+%     \includegraphics[width=0.49\textwidth]{figures/lch-thresh15-near50_dynamic_synsets.png}
        
 \end{figure}
 	
 \end{frame}
 
+%
+%\begin{frame}{Results: word sense disambiguation}
+%
+%\textbf{WSD: each column lists all the possible synsets for the corresponding word.}
+%
+%
+%\begin{figure}
+%       \centering
+%       \includegraphics[width=\textwidth]{figures/graph_wsd_example}
+%\end{figure}
+%	
+%\end{frame}
+%
 
-\begin{frame}{Results: word sense disambiguation}
-
-\textbf{WSD: each column lists all the possible synsets for the corresponding word.}
-
-
-\begin{figure}
-       \centering
-       \includegraphics[width=\textwidth]{figures/graph_wsd_example}
-\end{figure}
-	
-\end{frame}
-
-
-\begin{frame}{Results: word sense disambiguation}
-
-\textbf{F1 scores on Senseval-2 word sense disambiguation task}:
-
-\begin{table}
-\footnotesize
-\begin{tabular}{lccc}
-\toprule
-Model & \multicolumn{3}{c}{F-measure} \\
-\midrule
-WordNet JCN-SemCor & \multicolumn{3}{c}{\textbf{0.620}} \\
-WordNet JCN-Brown &   \multicolumn{3}{c}{0.561} \\
-WordNet LCH & \multicolumn{3}{c}{0.547} \\
-node2vec~\cite{grover2016node2vec} & \multicolumn{3}{c}{0.501} \\
-Deepwalk~\cite{perozzi2014deepwalk} & \multicolumn{3}{c}{0.528} \\
-FSE~\cite{subercaze:2015}  & \multicolumn{3}{c}{0.536} \\
-\midrule
-\multicolumn{4}{c}{ \textit{path2vec}} \\
-\midrule
-\textit{Batch size:} & 20 & 50 & 100 \\
-\midrule
-JCN-SemCor & \textbf{0.543} & \textbf{0.543} & 0.535 \\
-JCN-Brown & 0.538 & 0.515 & 0.542 \\
-LCH & 0.540 & 0.535 & 0.536 \\
-\bottomrule
-\end{tabular}
-\end{table}
-	
-\end{frame}
-
-
+%\begin{frame}{Results: word sense disambiguation}
+%
+%\textbf{F1 scores on Senseval-2 word sense disambiguation task}:
+%
+%\begin{table}
+%\footnotesize
+%\begin{tabular}{lccc}
+%\toprule
+%Model & \multicolumn{3}{c}{F-measure} \\
+%\midrule
+%WordNet JCN-SemCor & \multicolumn{3}{c}{\textbf{0.620}} \\
+%WordNet JCN-Brown &   \multicolumn{3}{c}{0.561} \\
+%WordNet LCH & \multicolumn{3}{c}{0.547} \\
+%node2vec~\cite{grover2016node2vec} & \multicolumn{3}{c}{0.501} \\
+%Deepwalk~\cite{perozzi2014deepwalk} & \multicolumn{3}{c}{0.528} \\
+%FSE~\cite{subercaze:2015}  & \multicolumn{3}{c}{0.536} \\
+%\midrule
+%\multicolumn{4}{c}{ \textit{path2vec}} \\
+%\midrule
+%\textit{Batch size:} & 20 & 50 & 100 \\
+%\midrule
+%JCN-SemCor & \textbf{0.543} & \textbf{0.543} & 0.535 \\
+%JCN-Brown & 0.538 & 0.515 & 0.542 \\
+%LCH & 0.540 & 0.535 & 0.536 \\
+%\bottomrule
+%\end{tabular}
+%\end{table}
+%	
+%\end{frame}
 
 
-\begin{frame}{Improved Model and Results}
 
 %
-%Original model:
+%\begin{frame}{Improved Model and Results}
+%
+%%
+%%Original model:
+%%$$
+%%\mathcal{L} = \frac{1}{|T|}  \sum_{ (v_i, v_j) \in T }  (\mathbf{v}_i \cdot \mathbf{v}_j - sim(v_i, v_j) )^2,
+%%$$
+%%
+%%
+%%Improved model:
 %$$
-%\mathcal{L} = \frac{1}{|T|}  \sum_{ (v_i, v_j) \in T }  (\mathbf{v}_i \cdot \mathbf{v}_j - sim(v_i, v_j) )^2,
+%\mathcal{L} = \frac{1}{|T|}  \sum_{ (v_i, v_j) \in T } \left( (\mathbf{v}_i^T \mathbf{v}_j - sim(v_i, v_j) )^2  + \alpha \mathbf{v}_i^T \mathbf{v}_{in} + \alpha \mathbf{v}_j^T \mathbf{v}_{jm} \right) ,
 %$$
 %
 %
-%Improved model:
-$$
-\mathcal{L} = \frac{1}{|T|}  \sum_{ (v_i, v_j) \in T } \left( (\mathbf{v}_i \cdot \mathbf{v}_j - sim(v_i, v_j) )^2  + \alert{\mathbf{v}_i \cdot \mathbf{v}_{in}} + \alert{\mathbf{v}_j \cdot \mathbf{v}_{jm}} \right) ,
-$$
-
-
-where:
-
-\begin{itemize}
-	\item $sim(v_i, v_j)$ - the value of a `gold' similarity measure between a pair of nodes $v_i$ and $v_j$;
-	\item $\mathbf{v}_i$ - an embeddings of node;
-	\item $T$ - training batch; 
-	\item \alert{$v_{in}$ - random adjacent node of $v_i$}.
-\end{itemize}
-
-\end{frame}
-
-
+%where:
+%
+%\begin{itemize}
+%	\item $sim(v_i, v_j)$ - the value of a `gold' similarity measure between a pair of nodes $v_i$ and $v_j$;
+%	\item $\mathbf{v}_i$ - an embeddings of node;
+%	\item $T$ - training batch; 
+%	\item $v_{in}$ - random adjacent node of $v_i$;
+%	\item $\alpha$ - a small regularization coefficient, e.g. $0.001$.
+%\end{itemize}
+%
+%\end{frame}
+%
+%
